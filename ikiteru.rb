@@ -29,15 +29,24 @@ def ikiteru?(addr, type)
 end
 
 stats = conf['services'].map{|s|
-  s['status'] = ikiteru?(s['addr'], s['type'])
+  if s['addr'].to_s.size < 1 or s['type'].to_s.size < 1
+    s['status'] = :config_error
+  elsif ikiteru?(s['addr'], s['type'])
+    s['status'] = :alive
+  else
+    s['status'] = :dead
+  end
   s
 }
 
 stats.each do |s|
   print "[#{s['type']}] #{s['addr']} => "
-  if s['status']
-    puts "alive".color(:green)
+  if s['status'] == :alive
+    color = :green
+  elsif s['status'] == :dead
+    color = :red
   else
-    puts "dead".color(:red)
+    color = :magenta
   end
+  puts "#{s['status']}".color(color)
 end
