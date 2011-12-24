@@ -1,5 +1,3 @@
-notify : 'skype'
-
 services : 
   - addr : 'http://github.com/shokai'
     type : 'http'
