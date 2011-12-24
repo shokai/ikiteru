@@ -1,9 +1,9 @@
 require 'rubygems'
 require 'bundler/setup'
+require File.dirname(__FILE__)+'/lib/loader'
 require 'yaml'
 require 'net/http'
 require 'uri'
-require 'rainbow'
 
 begin
   conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml').read
@@ -39,14 +39,14 @@ stats = conf['services'].map{|s|
   s
 }
 
-stats.each do |s|
-  print "[#{s['type']}] #{s['addr']} => "
-  if s['status'] == :alive
-    color = :green
-  elsif s['status'] == :dead
-    color = :red
-  else
-    color = :magenta
+@@plugins.keys.each do |k|
+  plugin = @@plugins[k]
+  stats.each do |s|
+    begin
+      Ikiteru::Plugin::Notify.new(s).instance_eval plugin
+    rescue SyntaxError => e
+      STDERR.puts "plugin \"#{k}\" eval error!!"
+      STDERR.puts e
+    end
   end
-  puts "#{s['status']}".color(color)
 end
