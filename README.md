@@ -1,6 +1,6 @@
 ikiteru
 =======
-service status watcher
+watch service status and notify.
 
 
 Install Dependencies
@@ -22,3 +22,11 @@ Run
 ---
 
     % ruby ikiteru.rb
+
+
+Plugins
+-------
+
+you can put plugins in "plugin/(watch|notify)" directory.
+
+* watch -> check status -> notify
