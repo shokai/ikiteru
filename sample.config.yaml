@@ -1,0 +1,11 @@
+notify : 'skype'
+
+services : 
+  - addr : 'http://github.com/shokai'
+    type : 'http'
+  - addr : 'github.com'
+    type : 'ping'
+  - addr : 'http://example.com.ping.fail/' # HTTP fail sample
+    type : 'http'
+  - addr : 'example.com.ping.fail' # ping fail sample
+    type : 'ping'
