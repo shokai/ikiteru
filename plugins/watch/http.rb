@@ -1,3 +1,15 @@
+## http status
+## ikiteru watch plugin
+
+### config
+## watch :
+##   - addr : 'http://example.com/auth'
+##     type : 'http'
+##     basic_user : 'username'
+##     basic_pass : 'password'
+
+
+
 require 'uri'
 require 'net/http'
 

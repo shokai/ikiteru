@@ -1,6 +1,13 @@
 ## notify-skype
 ## ikiteru notify plugin
 ## https://github.com/shokai/skype-chat-gateway-mac
+## or https://github.com/shokai/skype-chat-gateway-linux
+
+### config
+## notify : 
+##  - name : 'skype'
+##    url : 'http://localhost:8787/'
+
 
 if status != :alive
   require 'net/http'

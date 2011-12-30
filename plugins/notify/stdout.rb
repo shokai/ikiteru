@@ -1,3 +1,7 @@
+## standard output
+## ikiteru notfiy plugin
+### gem install 'rainbow'
+
 require 'rainbow'
 
 print "[#{type}] #{addr} => "
