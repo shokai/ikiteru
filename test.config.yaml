@@ -1,0 +1,28 @@
+## config for local test
+
+notify : 
+  - name : 'stdout'
+  - name : 'skype'
+    url : 'http://localhost:8787/'
+
+watch : 
+  - addr : 'http://localhost:8080/status/200'
+    type : 'http'
+  - addr : 'http://localhost:8080/status/500'
+    type : 'http'
+
+  - addr : 'http://localhost:8080/status/200'
+    type : 'http_content_diff'
+  - addr : 'http://localhost:8080/time'
+    type : 'http_content_diff'
+    memcache : 'localhost:11211'
+    expire : 600
+
+  - addr : 'localhost'
+    type : 'ping'
+  - addr : 'http://example.com.ping.fail/' # HTTP fail sample
+    type : 'http'
+  - addr : 'example.com.ping.fail' # ping fail sample
+    type : 'ping'
+  - addr : '' # config fail sample
+    type : 'ping'

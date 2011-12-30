@@ -24,6 +24,11 @@ Run
     % ruby ikiteru.rb
 
 
+Test
+----
+
+    % ruby ikiteru.rb test.config.yaml
+
 Plugins
 -------
 

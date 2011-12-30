@@ -3,8 +3,10 @@ require 'bundler/setup'
 require File.dirname(__FILE__)+'/lib/loader'
 require 'yaml'
 
+conf_fname = ARGV.first ? ARGV.shift : File.dirname(__FILE__)+'/config.yaml'
+
 begin
-  conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml').read
+  conf = YAML::load open(conf_fname).read
 rescue => e
   STDERR.puts e
   STDERR.puts "config.yaml load error!!"
