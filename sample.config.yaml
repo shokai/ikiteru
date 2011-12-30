@@ -1,15 +1,15 @@
-notify : 
+notify :
   - name : 'stdout'
   - name : 'skype'
     url : 'http://localhost:8787/'
 
-watch : 
+watch :
   - addr : 'http://github.com/shokai'
     type : 'http'
   - addr : 'github.com'
     type : 'ping'
   - addr : 'http://example.com/auth'
-    type : 'http'  
+    type : 'http'
     basic_user : 'username'
     basic_pass : 'password'
   - addr : 'http://example.com.ping.fail/' # HTTP fail sample
