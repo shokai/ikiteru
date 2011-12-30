@@ -1,10 +1,11 @@
 module Ikiteru::Plugin
   class Watch
-    attr_reader :addr, :type
+    attr_reader :addr, :type, :params
     
-    def initialize(params)
-      @addr = params['addr']
-      @type = params['type']
+    def initialize(addr, type, params={})
+      @addr = addr
+      @type = type
+      @params = params
     end
   end
 end

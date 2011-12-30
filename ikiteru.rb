@@ -10,20 +10,25 @@ rescue => e
   STDERR.puts "config.yaml load error!!"
 end
 
-def ikiteru?(addr, type)
+def ikiteru?(addr, type, params)
   plugin = @@plugins[:watch][type.to_sym]
   begin
-    Ikiteru::Plugin::Watch.new({'addr' => addr, 'type' => type}).instance_eval plugin
+    Ikiteru::Plugin::Watch.new(addr, type, params).instance_eval plugin
   rescue SyntaxError => e
     STDERR.puts "plugin \"watch/#{k}\" eval error!!"
     STDERR.puts e
   end
 end
 
-stats = conf['services'].map{|s|
+stats = conf['watch'].map{|s|
+  params = Hash.new
+  s.each{|k,v|
+    next if ['addr', 'type'].include? k
+    params[k] = v
+  }
   if s['addr'].to_s.size < 1 or s['type'].to_s.size < 1
     s['status'] = :config_error
-  elsif ikiteru?(s['addr'], s['type'])
+  elsif ikiteru?(s['addr'], s['type'], params)
     s['status'] = :alive
   else
     s['status'] = :dead

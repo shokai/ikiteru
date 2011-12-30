@@ -1,8 +1,12 @@
-services : 
+watch : 
   - addr : 'http://github.com/shokai'
     type : 'http'
   - addr : 'github.com'
     type : 'ping'
+  - addr : 'http://example.com/auth'
+    type : 'http'  
+    basic_user : 'masu1lab'
+    basic_pass : 'pitecan'
   - addr : 'http://example.com.ping.fail/' # HTTP fail sample
     type : 'http'
   - addr : 'example.com.ping.fail' # ping fail sample
