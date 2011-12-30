@@ -8,7 +8,6 @@
 ##  - name : 'skype'
 ##    url : 'http://localhost:8787/'
 
-
 if status != :alive
   require 'net/http'
   require 'uri'
