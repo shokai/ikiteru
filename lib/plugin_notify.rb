@@ -1,11 +1,12 @@
 module Ikiteru::Plugin
   class Notify
-    attr_reader :addr, :type, :status
+    attr_reader :addr, :type, :status, :params
     
-    def initialize(params)
-      @addr = params['addr']
-      @type = params['type']
-      @status = params['status']
+    def initialize(result, params)
+      @addr = result['addr']
+      @type = result['type']
+      @status = result['status']
+      @params = params
     end
   end
 end

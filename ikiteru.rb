@@ -36,11 +36,22 @@ stats = conf['watch'].map{|s|
   s
 }
 
-@@plugins[:notify].keys.each do |k|
-  plugin = @@plugins[:notify][k]
+conf['notify'].each do |n|
+  next if n['name'].to_s.size < 1
+  name = n['name'].to_sym
+  unless @@plugins[:notify].keys.include? name
+    STDERR.puts "plugin \"notify/#{n['name']}\" not installed!!"
+    next
+  end
+  plugin = @@plugins[:notify][name]
+  params = Hash.new
+  n.each{|k,v|
+    next if k == 'name'
+    params[k] = v
+  }
   stats.each do |s|
     begin
-      Ikiteru::Plugin::Notify.new(s).instance_eval plugin
+      Ikiteru::Plugin::Notify.new(s, params).instance_eval plugin
     rescue SyntaxError => e
       STDERR.puts "plugin \"notify/#{k}\" eval error!!"
       STDERR.puts e
