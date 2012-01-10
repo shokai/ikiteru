@@ -6,8 +6,13 @@ watch service status and notify.
 Install Dependencies
 --------------------
 
-    % gem install bundler
-    % bundle install
+install gems for plugins
+
+    % gem install rainbow
+
+install gems more (optional)
+
+    % gem install memcached im-kayac gyazz
 
 
 Config
