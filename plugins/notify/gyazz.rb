@@ -13,7 +13,7 @@
 
 if status != :alive
   require 'gyazz'
-  text = "#{addr} => [[[#{status}]]] [#{type}]"
+  text = "#{addr} => [[[#{status}]]] [#{type}] at #{Time.now}"
   page = params['page']
   begin
     g = Gyazz.new(params['title'], params['basic_user'], params['basic_pass'])
