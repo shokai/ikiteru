@@ -16,7 +16,7 @@ class TestHttpServer < EM::Connection
       res.content = Time.now.to_s
     else
       res.status = @http_path_info.scan(/status\/(\d+)$/).first.first.to_i rescue res.status = 200
-      res.content = "statud #{res.status}"
+      res.content = "status #{res.status}"
     end
     res.send_response
   end
