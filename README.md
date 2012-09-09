@@ -12,7 +12,7 @@ install gems for plugins
 
 install gems more (optional)
 
-    % gem install memcached im-kayac gyazz
+    % gem install dalli im-kayac gyazz
 
 
 Config

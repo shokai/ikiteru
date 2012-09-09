@@ -12,11 +12,11 @@
 
 require 'uri'
 require 'net/http'
-require 'memcached'
+require 'dalli'
 
 cache_addr = params['memcache'] ? params['memcache'] : 'localhost:11211'
-expire = params['expire'] ? params['expire'] : 600
-cache = Memcached.new(cache_addr)
+expire = params['expire'] ? params['expire'].to_i : 600
+cache = Dalli::Client.new cache_addr
 key = "http_content_diff_#{URI.encode addr}"
 
 uri = URI.parse URI.encode(addr)
